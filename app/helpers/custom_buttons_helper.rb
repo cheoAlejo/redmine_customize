@@ -52,8 +52,8 @@ module CustomButtonsHelper
 
     tag_options = {:id => field_id, :class => "#{custom_field.field_format}_cf"}
 
-    field_format = ::Redmine::CustomFieldFormat.find_by_name(custom_field.field_format)
-    case field_format.try(:edit_as)
+    field_format = custom_field.field_format
+    case field_format
       when "date"
         text_field_tag(field_name, custom_value.value, tag_options.merge(:size => 10)) +
             calendar_for(field_id)

@@ -4,7 +4,11 @@ $(document).ready(function(){
     var new_values = $(this).data("new-values");
     var form = $("form#issue-form");
     for(var field_name in new_values) {
-      form.find("#issue_" + field_name).val(new_values[field_name]);
+      var inputElement = form.find("#issue_" + field_name);
+      inputElement.val(new_values[field_name]);
+      if ("radio" == inputElement.prop('type')) {
+        inputElement.attr('checked','checked');
+      }
     }
     form.submit();
   });
